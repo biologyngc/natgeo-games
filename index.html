@@ -9,6 +9,71 @@
         integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .activities-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .activities-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .activities-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .activities-header h1 {
+            color: white;
+            margin: 0;
+        }
+
+        .activities-header .bar {
+            background-color: #ff6600;
+        }
+
+        .close-activities-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            top: -10px;
+            line-height: 1;
+        }
+
+        .close-activities-btn:hover {
+            color: #ff6600;
+        }
+
+        .activities-iframe-container {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .activities-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
     <title>National Geographic</title>
 </head>
 
@@ -142,7 +207,7 @@
                             <div class=" list-card-content">
                                 <div class="category">
                                     <span>
-                                        <a href="" class="list-card-link">
+                                        <a href="javascript:void(0)" onclick="toggleActivities()" class="list-card-link">
                                             COVID-19
                                         </a>
                                     </span>
@@ -928,6 +993,22 @@
     </section>
 
 
+    <!-- Activities Section (Hidden by default) -->
+    <section id="activities-section" class="activities-section" style="display: none;">
+        <div class="activities-container">
+            <div class="activities-header">
+                <h1 class="general-h1">EDUCATIONAL ACTIVITIES</h1>
+                <p class="bar"></p>
+                <button class="close-activities-btn" onclick="toggleActivities()">×</button>
+            </div>
+            <div class="activities-content">
+                <div class="activities-iframe-container">
+                    <iframe src="games.html" class="activities-iframe" title="Educational Activities"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-container">
             <div class="footer-flex">
@@ -1048,6 +1129,18 @@
 
     <script src="./js/glider.min.js"></script>
     <script src="./js/index.js"></script>
+    <script>
+        function toggleActivities() {
+            const activitiesSection = document.getElementById('activities-section');
+            if (activitiesSection.style.display === 'none') {
+                activitiesSection.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            } else {
+                activitiesSection.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
 </body>
 
 </html>
